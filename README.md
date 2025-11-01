@@ -194,7 +194,19 @@ DropD-SLAM requires three types of pretrained ONNX models:
 
 ### 1. Depth Estimation Model (UniDepthV2)
 
-Use provided unidepth model.
+Download the UniDepthV2 ONNX model from the following link:
+
+**Download Link:** [UniDepthV2 Model](https://drive.google.com/file/d/1MmL4UyKbwlOpIITj6Uh0SNv7TMtI0Ezy/view?usp=drive_link)
+
+After downloading, place the model file in the `models/` directory:
+
+```bash
+# Move the downloaded model to models directory
+# Replace 'unidepthv2_with_cam.onnx' with the actual filename from the download
+mv /path/to/downloaded/unidepthv2_with_cam.onnx models/
+```
+
+**Note:** This model includes camera intrinsics support (`--with-camera` variant) and requires camera calibration parameters in your configuration file.
 
 
 ## Build the Library
