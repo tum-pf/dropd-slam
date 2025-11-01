@@ -408,7 +408,7 @@ For issues with specific models:
 - KeyNet: [GitHub Issues](https://github.com/axelBarroso/Key.Net/issues)  
 - YOLO: [Ultralytics Docs](https://docs.ultralytics.com/)
 
-# 7. TODO / Future Work
+# 7. TODO(WIP)
 
 The following items are planned for future releases:
 
