@@ -7,7 +7,10 @@
 # Unignore all dirs
 !*/
 
-CMakeLists.txt.user
+# Unignore important files without extensions
+!LICENSE
+!README
+
 CMakeLists_modified.txt
 
 Examples/RGB-D/rgbd_tum
@@ -37,15 +40,7 @@ Thirdparty/g2o/lib/
 Vocabulary/ORBvoc.txt
 build/
 *.txt
-*.tgz
-*.tar.gz
-*.tar
-*.gz
-*.zip
-*.7z
-*.rar
-*.iso
-*.dmg
+!CMakeLists.txt
 
 lib/
 
