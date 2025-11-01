@@ -1,4 +1,4 @@
-# DropD-SLAM: Depth-Free RGB-D SLAM
+# Dropping the D: RGB-D SLAM Without the Depth Sensor
 
 **A real-time monocular SLAM system that achieves RGB-D accuracy without requiring a depth sensor.**
 https://arxiv.org/abs/2510.06216
