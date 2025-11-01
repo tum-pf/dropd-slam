@@ -1,7 +1,7 @@
 # DropD-SLAM: Depth-Free RGB-D SLAM
 
 **A real-time monocular SLAM system that achieves RGB-D accuracy without requiring a depth sensor.**
-
+https://arxiv.org/abs/2510.06216
 ## Overview
 
 **DropD-SLAM** replaces the active depth input of classical feature-based SLAM with pretrained deep learning modules:
