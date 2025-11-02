@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="DropD-SLAM: RGB-D SLAM Without the Depth Sensor">
+    <meta name="keywords" content="DropD-SLAM, SLAM, Monocular SLAM, Depth Estimation, ORB-SLAM3, Computer Vision">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <title>DropD-SLAM: RGB-D SLAM Without the Depth Sensor</title>
+
+    <!-- Google Fonts (optional) -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    <!-- Nerfies' custom overrides (adapted for DropD-SLAM) -->
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <!-- Favicon -->
+    <!--    <link rel="icon" href="./static/images/favicon.svg">-->
+</head>
+<body>
+
+<!-- Hero / Title -->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Dropping the D: RGB-D SLAM <br> Without the Depth Sensor</h1>
+                    <div class="is-size-5 publication-authors">
+              <span class="author-block">
+  Mert Kiray<sup>1,2</sup>,
+</span>
+                        <span class="author-block">
+  Alican Karaomer<sup>1</sup>,
+</span>
+                        <span class="author-block">
+  Benjamin Busam<sup>1,2</sup>
+</span>
+
+                    </div>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Technical University of Munich (TUM),</span>
+                        <span class="author-block"><sup>2</sup>3dwe.ai</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links" style="margin-top: 1rem;">
+                            <!-- arXiv Link -->
+                            <span class="link-block">
+      <a href="https://arxiv.org/abs/2510.06216" class="external-link button is-normal is-rounded is-dark"
+         target="_blank">
+        <span class="icon">
+          <i class="ai ai-arxiv"></i>
+        </span>
+        <span>arXiv</span>
+      </a>
+    </span>
+                            <!-- Code Link -->
+                            <span class="link-block">
+      <a href="https://github.com/3dwe-ai/dropd-slam" class="external-link button is-normal is-rounded is-dark"
+         target="_blank">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>Code</span>
+      </a>
+    </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Teaser Section -->
+<section>
+    <div class="container is-max-desktop">
+        <!-- Paper Video (if available) -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <!-- Video placeholder - replace with actual video when available -->
+                <!--
+                <div class="publication-video">
+                    <iframe width="560" height="315" src=""
+                            title="DropD-SLAM Video" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                -->
+                <h2 class="subtitle has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    A real-time monocular SLAM system that achieves RGB-D accuracy without requiring a depth sensor.
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pipeline Overview -->
+<section id="pipeline" class="section has-background-light">
+    <div class="container is-fluid">
+        <h3 class="title is-3 has-text-centered">Pipeline Overview</h3>
+        <div class="has-text-centered">
+            <!-- Pipeline image placeholder - add actual image when available -->
+            <!--
+            <figure class="image" style="margin: auto; max-width: 1200px;">
+                <img src="./static/images/pipeline.png" alt="DropD-SLAM Pipeline Overview"
+                     style="width: 100%; height: auto;">
+            </figure>
+            <p class="is-size-7 has-text-grey"><i>Figure: DropD-SLAM pipeline overview.</i></p>
+            -->
+            <div class="content has-text-justified" style="max-width: 900px; margin: 0 auto;">
+                <p class="is-size-6">
+                    <strong>DropD-SLAM</strong> replaces the active depth input of classical feature-based SLAM with pretrained deep learning modules:
+                </p>
+                <ul style="text-align: left; display: inline-block;">
+                    <li><strong>Monocular Metric Depth Estimation</strong> (UniDepthV2) - Predicts absolute scale depth from RGB</li>
+                    <li><strong>Learned Keypoint Detection</strong> (KeyNet) - Robust feature detection and description</li>
+                    <li><strong>Instance Level Segmentation</strong> (YOLO11) - Dynamic object detection and masking</li>
+                </ul>
+                <p class="is-size-6" style="margin-top: 1rem;">
+                    The system removes keypoints on dynamic objects after mask dilation, assigns metric depth values to static keypoints from the predicted depth map, and backprojects them into 3D to initialize map points at absolute scale. These are provided to an unmodified <strong>ORB-SLAM3 backend</strong> for tracking, mapping, and loop closure.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Abstract Section -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We present <strong>DropD-SLAM</strong>, a real-time monocular SLAM system that achieves RGB-D accuracy without requiring a depth sensor. Our approach replaces the active depth input of classical feature-based SLAM with pretrained deep learning modules. We leverage <strong>UniDepthV2</strong> for monocular metric depth estimation, <strong>KeyNet</strong> for robust learned keypoint detection and description, and <strong>YOLO11</strong> for instance-level segmentation to handle dynamic objects.
+                    </p>
+                    <p>
+                        The system removes keypoints on dynamic objects after mask dilation, assigns metric depth values to static keypoints from the predicted depth map, and backprojects them into 3D to initialize map points at absolute scale. These are provided to an unmodified <strong>ORB-SLAM3 backend</strong> for tracking, mapping, and loop closure.
+                    </p>
+                    <p>
+                        On the <strong>TUM RGB-D benchmark</strong>, DropD-SLAM matches the accuracy of established RGB-D baselines on static sequences and outperforms recent monocular methods on dynamic sequences, while operating in real-time on a single GPU. This design eliminates the need for specialized depth hardware, making high-quality SLAM accessible with standard RGB cameras.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features Section -->
+<section class="section has-background-light">
+    <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-centered">Key Features</h3>
+        <div class="columns is-centered">
+            <div class="column is-three-quarters">
+                <div class="content">
+                    <ul class="is-size-6" style="text-align: left;">
+                        <li>? <strong>RGB-D accuracy from monocular RGB</strong> - No depth sensor required</li>
+                        <li>? <strong>Real-time performance</strong> - Operates on a single GPU</li>
+                        <li>? <strong>Robust to dynamic objects</strong> - Via instance segmentation and mask dilation</li>
+                        <li>? <strong>Metric absolute scale</strong> - Via monocular depth prediction</li>
+                        <li>? <strong>Uses pretrained models</strong> - No retraining of the backend required</li>
+                        <li>? <strong>Built on ORB-SLAM3</strong> - Proven robust SLAM backend</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Citation Section -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 has-text-centered">Citation</h2>
+                <div class="content">
+                    <pre style="background-color: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;"><code>@misc{kiray2025droppingdrgbdslam,
+      title={Dropping the D: RGB-D SLAM Without the Depth Sensor}, 
+      author={Mert Kiray and Alican Karaomer and Benjamin Busam},
+      year={2025},
+      eprint={2510.06216},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.06216}, 
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer has-background-light">
+    <div class="content has-text-centered">
+        <p>&copy; 2025 DropD-SLAM Team ? Maintained by <a href="https://3dwe.ai">3Dwe.ai</a>.</p>
+        <p>We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+            template of this website.</p>
+        <p>Built upon <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3">ORB-SLAM3</a> by Carlos Campos, Richard Elvira, Juan J. G?mez Rodr?guez, Jos? M. M. Montiel and Juan D. Tard?s.</p>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+</body>
+</html>
