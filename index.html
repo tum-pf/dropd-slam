@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="DropD-SLAM: RGB-D SLAM Without the Depth Sensor - A real-time monocular SLAM system">
+    <meta name="keywords" content="DropD-SLAM, SLAM, Monocular SLAM, RGB-D SLAM, ORB-SLAM3, Computer Vision, Robotics">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <title>DropD-SLAM: RGB-D SLAM Without the Depth Sensor</title>
+
+    <!-- Google Fonts (optional) -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    <!-- Nerfies' custom overrides (adapted for DropD-SLAM) -->
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <!-- Favicon -->
+    <!--    <link rel="icon" href="./static/images/favicon.svg">-->
+</head>
+<body>
+
+<!-- Hero / Title -->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Dropping the D: RGB-D SLAM <br> Without the Depth Sensor</h1>
+                    <div class="is-size-5 publication-authors">
+              <span class="author-block">
+  Mert Kiray<sup>1,2,3</sup>,
+</span>
+                        <span class="author-block">
+  Alican Karaomer<sup>1</sup>,
+</span>
+                        <span class="author-block">
+  Benjamin Busam<sup>1,2,3</sup>
+</span>
+
+                    </div>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Technical University of Munich (TUM), &nbsp;&nbsp;<sup>2</sup>3dwe.ai, &nbsp;&nbsp;<sup>3</sup>Munich Center for Machine Learning</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links" style="margin-top: 1rem;">
+                            <!-- arXiv Link -->
+                            <span class="link-block">
+      <a href="https://arxiv.org/abs/2510.06216" class="external-link button is-normal is-rounded is-dark"
+         target="_blank">
+        <span class="icon">
+          <i class="ai ai-arxiv"></i>
+        </span>
+        <span>arXiv</span>
+      </a>
+    </span>
+                            <!-- Code Link -->
+                            <span class="link-block">
+      <a href="https://github.com/tum-pf/dropd-slam" class="external-link button is-normal is-rounded is-dark"
+         target="_blank">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>Code</span>
+      </a>
+    </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Teaser Section -->
+<section>
+    <div class="container is-max-desktop">
+        <!-- Paper Teaser Image -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-full">
+                <figure class="image" style="margin: auto;">
+                    <img src="./static/images/teaser.png" alt="DropD-SLAM Teaser"
+                         style="width: 100%; height: auto; border-radius: 10px;">
+                </figure>
+                <h2 class="subtitle has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    Conceptual comparison between traditional RGB-D SLAM and our proposed DropD-SLAM. Conventional pipelines require active depth sensing for scale and robustness, while DropD-SLAM achieves comparable performance from a single RGB input by leveraging pretrained modules for depth, features, and instance segmentation.
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pipeline Overview -->
+<section id="pipeline" class="section has-background-light">
+    <div class="container is-fluid">
+        <h3 class="title is-3 has-text-centered">Pipeline Overview</h3>
+        <div class="has-text-centered">
+            <figure class="image" style="margin: auto; max-width: 900px;">
+                <img src="./static/images/pipeline.png" alt="DropD-SLAM Pipeline Overview"
+                     style="width: 100%; height: auto;">
+            </figure>
+            <p class="is-size-7 has-text-grey"><i>Figure: DropD-SLAM pipeline overview.</i></p>
+        </div>
+    </div>
+</section>
+
+<!-- Abstract Section -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We present <strong>DropD-SLAM</strong>, a real-time monocular SLAM system that achieves RGB-D-level accuracy 
+                        without relying on depth sensors. The system replaces active depth input with three pretrained vision modules: 
+                        a monocular metric depth estimator, a learned keypoint detector, and an instance segmentation network. Dynamic 
+                        objects are suppressed using dilated instance masks, while static keypoints are assigned predicted depth values 
+                        and backprojected into 3D to form metrically scaled features. These are processed by an unmodified RGB-D SLAM 
+                        back end for tracking and mapping. On the TUM RGB-D benchmark, DropD-SLAM attains 7.4 cm mean ATE on static 
+                        sequences and 1.8 cm on dynamic sequences, matching or surpassing state-of-the-art RGB-D methods while operating 
+                        at 22 FPS on a single GPU.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer has-background-light">
+    <div class="content has-text-centered">
+        <p>&copy; 2025 <a href="https://www.asg.ed.tum.de/pf/home/">PRS Team</a></p>
+        <p>We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+            template of this website.</p>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+</body>
+</html>
